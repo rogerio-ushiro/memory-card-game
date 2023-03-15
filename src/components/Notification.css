@@ -1,0 +1,65 @@
+.notification,
+.game-over {
+  display: none;
+  opacity: 1;
+  position: absolute;
+  margin: auto 0;
+  top: 50%;
+  width: 50%;
+  text-align: center;
+
+  z-index: 1000;
+  color: white;
+  font-size: 72px;
+  font-weight: bolder;
+
+  transition-timing-function: ease-out;
+  animation-iteration-count: 1;
+  animation: scoreUp 1.5s;
+}
+
+.game-over {
+  transition-timing-function: ease-out;
+  animation: game-over-animation 5s;
+}
+
+.show {
+  display: block;
+}
+
+@keyframes scoreUp {
+  0% {
+    visibility: visible;
+    padding-top: 20px;
+    opacity: 0;
+    text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.5), 0 0 0.2em white;
+  }
+  10% {
+    opacity: 1;
+  }
+  100% {
+    padding-top: 0px;
+    opacity: 0;
+    text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.5), 0 0 0.2em white;
+  }
+}
+
+@keyframes game-over-animation {
+  0% {
+    visibility: visible;
+    padding-top: 20px;
+    opacity: 0;
+    text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.5), 0 0 0.2em white;
+  }
+  10% {
+    opacity: 1;
+    padding-top: 0px;
+  }
+  95% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+    text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.5);
+  }
+}

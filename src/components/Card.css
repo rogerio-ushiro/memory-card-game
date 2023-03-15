@@ -1,0 +1,41 @@
+.memory-card {
+  width: 200px;
+  height: 300px;
+  margin: 5px;
+  position: relative;
+  transform: scale(1);
+  transform-style: preserve-3d;
+  transition: transform 0.5s;
+}
+
+.memory-card:active {
+  transform: scale(0.97);
+  transition: 0.2s transform;
+}
+
+.memory-card.flip {
+  transform: rotateY(180deg);
+}
+
+.front-face,
+.back-face {
+  width: 100%;
+  height: 100%;
+  padding: 20px;
+  position: absolute;
+  border-radius: 5px;
+  border: 2px solid rgba(0, 0, 0, 0);
+  background: #1c7ccc;
+  backface-visibility: hidden;
+}
+
+.front-face {
+  transform: rotateY(180deg);
+}
+
+.front-face.matched {
+  transform: rotateY(180deg);
+  border: 2px solid rgba(255, 255, 255, 1);
+  border-radius: 5px;
+  opacity: .8;
+}
