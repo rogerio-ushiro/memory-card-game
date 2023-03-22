@@ -1,46 +1,50 @@
 .notification,
 .game-over {
+  position: fixed;
   display: none;
   opacity: 1;
-  position: absolute;
   margin: auto 0;
-  top: 50%;
-  width: 50%;
+  top: 20%;
+  width: 100%;
   text-align: center;
-
+  font-family: karmatic;
   z-index: 1000;
-  color: white;
-  font-size: 72px;
+  color: greenyellow;
+  font-size: 2rem;
   font-weight: bolder;
-
   transition-timing-function: ease-out;
   animation-iteration-count: 1;
-  animation: scoreUp 1.5s;
+  animation: scoreUp 1.5s forwards;
 }
 
 .game-over {
   transition-timing-function: ease-out;
-  animation: game-over-animation 5s;
+  animation: game-over-animation 5s forwards;
 }
 
 .show {
   display: block;
 }
 
+@font-face {
+  font-family: karmatic;
+  src: url("../../assets/ka1.ttf");
+}
+
 @keyframes scoreUp {
   0% {
     visibility: visible;
     padding-top: 20px;
-    opacity: 0;
-    text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.5), 0 0 0.2em white;
+    opacity: 0.2;
+    text-shadow: 0 0 0.2em white;
   }
   10% {
     opacity: 1;
   }
   100% {
     padding-top: 0px;
-    opacity: 0;
-    text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.5), 0 0 0.2em white;
+    opacity: 0.2;
+    text-shadow: 0 0 0.2em white;
   }
 }
 

@@ -6,11 +6,12 @@
   transform: scale(1);
   transform-style: preserve-3d;
   transition: transform 0.5s;
+  border-radius: 35px;
 }
 
 .memory-card:active {
-  transform: scale(0.97);
-  transition: 0.2s transform;
+  transform: scale(0.8);
+  transition: 0.5s transform;
 }
 
 .memory-card.flip {
@@ -23,9 +24,9 @@
   height: 100%;
   padding: 20px;
   position: absolute;
-  border-radius: 5px;
-  border: 2px solid rgba(0, 0, 0, 0);
-  background: #1c7ccc;
+  border-radius: 35px;
+  border: 4px solid rgba(0, 0, 0, 0);
+  background: #fff;
   backface-visibility: hidden;
 }
 
@@ -35,7 +36,7 @@
 
 .front-face.matched {
   transform: rotateY(180deg);
-  border: 2px solid rgba(255, 255, 255, 1);
-  border-radius: 5px;
-  opacity: .8;
+  border: 4px solid rgba(255, 255, 255, 1);
+  border-radius: 35px;
+  opacity: 0.5;
 }

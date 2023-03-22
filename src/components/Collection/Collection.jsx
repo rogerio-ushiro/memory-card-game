@@ -1,11 +1,15 @@
-import Card from "./Card";
+import { useTransition } from "react";
+import Card from "../Card/Card";
 import "./Collection.css";
 
-const cards = ["aurelia", "vue", "angular", "ember", "backbone", "react"];
+var cards = process.env.REACT_APP_CARDS.split(",");
+
 let enabledClick = true;
 let firstCard, secondCard;
 
 const Collection = (props) => {
+  const [isPending, startTransition] = useTransition();
+
   // Added a duplicate card collection with uppercase names to avoid accidental matches by double-clicking, then shuffle all.
   const shuffledArray = cards.concat(cards.map((value) => value.toUpperCase()));
   // .sort((a, b) => 0.5 - Math.random());
@@ -14,44 +18,43 @@ const Collection = (props) => {
   const selectedCard = (obj) => {
     if (enabledClick) {
       obj.flip();
-
       if (firstCard == null) {
         firstCard = obj;
       } else {
         secondCard = obj;
-        enabledClick = false;
-        setTimeout(() => {
-          enabledClick = true;
-        }, 1500);
+        checkForMatch();
       }
-
-      // if second card is selected, call a comparison
-      if (secondCard != null) checkForMatch();
     }
   };
 
   // check if both are a match
   function checkForMatch() {
+    enabledClick = false;
     if (
       // Check if names differ to distinguish cards (avoid double selecting same card),/ but compare in uppercase to check for equality.
       firstCard.name !== secondCard.name &&
       firstCard.name.toUpperCase() === secondCard.name.toUpperCase()
     ) {
       setTimeout(() => {
-        firstCard.matched();
-        secondCard.matched();
-        [firstCard, secondCard] = [null, null, null, null];
-        enabledClick = true;
+        startTransition(() => {
+          firstCard.matched();
+          secondCard.matched();
+          [firstCard, secondCard] = [null, null, null, null];
+        });
         props.notificationTrigger();
       }, 400);
     } else {
       setTimeout(() => {
-        firstCard.unflip();
-        secondCard.unflip();
-        enabledClick = true;
-        [firstCard, secondCard] = [null, null, null, null];
+        startTransition(() => {
+          firstCard.unflip();
+          secondCard.unflip();
+          [firstCard, secondCard] = [null, null, null, null];
+        });
       }, 800);
     }
+    setTimeout(() => {
+      enabledClick = true;
+    }, 1500);
   }
 
   return (

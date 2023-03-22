@@ -1,0 +1,11 @@
+.timer {
+  font-size: 4rem;
+  text-align: center;
+  font-family: karmatic;
+  color: #ccc;
+}
+
+@font-face {
+  font-family: karmatic;
+  src: url("../../assets/ka1.ttf");
+}

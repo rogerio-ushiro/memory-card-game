@@ -18,20 +18,21 @@
                                     supported by Chrome, Edge, Opera and Firefox */
 }
 
-body {
-  height: 100vh;
-  display: flex;
-  background: #060ab2;
-}
-
 .center {
   margin: auto;
   width: 80%;
   padding: 10px;
 }
 
-
 .App {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: auto;
+  width: 1920px;
+}
+
+.header {
   position: absolute;
-  width: 100%;
+  top: 2rem;
 }

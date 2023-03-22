@@ -1,0 +1,30 @@
+.memory-game {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  width: 80%;
+  margin: auto;
+  transform: perspective(100rem) rotateY(10deg) rotateX(10deg);
+  animation: startUp 2.5s forwards;
+  animation-iteration-count: 1;
+}
+
+@keyframes startUp {
+  0% {
+    opacity: 0;
+    scale: 2;
+    padding-top: 0%;
+
+    transform: perspective(10rem) rotateX(30deg);
+  }
+  80% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 1;
+    scale: 1;
+    padding-top: 10%;
+
+    transform: perspective(80rem) rotateY(0) rotateX(5deg);
+  }
+}
