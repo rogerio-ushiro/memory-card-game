@@ -6,7 +6,6 @@ const Timer = forwardRef((props, ref) => {
 
   useImperativeHandle(ref, () => ({
     addPoint() {
-      console.log("add point: " + scoreNumber);
       setScoreNumber((scoreNumber) => scoreNumber + 10);
     },
     reset() {
