@@ -8,23 +8,33 @@ import Score from "./components/Score/Score";
 var seconds = parseInt(process.env.REACT_APP_TIME_SECONDS);
 
 function App() {
-  const notificationRef = useRef();
-  const scoreRef = useRef(null);
+  const refNotification = useRef();
+  const refScore = useRef();
+  const refCollection = useRef();
 
   const notify = () => {
-    notificationRef.current.showNotification();
-    scoreRef.current.addPoint();
+    refNotification.current.showNotification();
+    refScore.current.addPoint();
+  };
+
+  const gameOverTrigger = () => {
+    console.log("game over");
+    // scoreRef.current.handleChildMethod();
   };
 
   return (
     <div className="App center">
-      <Notification ref={notificationRef} />
+      <Notification ref={refNotification} />
       <div className="header">
-        <Timer className="timer" seconds={seconds} />
-        <Score className="score" ref={scoreRef} />
+        <Timer
+          className="timer"
+          seconds={seconds}
+          gameOverTrigger={gameOverTrigger}
+        />
+        <Score className="score" ref={refScore} />
       </div>
       <section className="memory-game">
-        <Collection notificationTrigger={notify} />
+        <Collection ref={refCollection} notificationTrigger={notify} />
       </section>
     </div>
   );
