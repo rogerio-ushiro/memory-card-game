@@ -1,34 +1,26 @@
 import { useEffect, useState } from "react";
 import "./Timer.css";
 
-const Timer = ({ seconds, gameOverTrigger }) => {
-  const [timeLeft, setTimeLeft] = useState(3);
-  const [timeLeftStr, setTimeLeftStr] = useState([]);
+const Timer = ({ state, dispatch }) => {
 
   const addZero = (time) => (time < 10 ? "0" + time : time);
 
   const formatTime = (time) => {
-    const minutes = Math.floor(timeLeft / 60);
-    const seconds = timeLeft - minutes * 60;
+    const minutes = Math.floor(time / 60);
+    const seconds = time - minutes * 60;
     return (minutes > 0 ? addZero(minutes) + ":" : "") + addZero(seconds);
   };
 
   useEffect(() => {
-    if (timeLeft === -1) {
-      gameOverTrigger();
-      return;
-    }
-
     const intervalId = setInterval(() => {
-      setTimeLeft(timeLeft - 1);
-
-      setTimeLeftStr(`${formatTime(timeLeft)}}`);
+      dispatch({ type: 'decrement' });
     }, 1000);
 
     return () => clearInterval(intervalId);
-  }, [timeLeft]);
+  }, [state.time]);
 
-  return <div className="timer">{timeLeftStr}</div>;
+
+  return <div className="timer">{state.time}</div>;
 };
 
 export default Timer;

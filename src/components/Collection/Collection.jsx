@@ -1,4 +1,4 @@
-import { forwardRef } from "react";
+import { forwardRef, useImperativeHandle, useState } from "react";
 import Card from "../Card/Card";
 import "./Collection.css";
 
@@ -8,12 +8,12 @@ let enabledClick = true;
 let firstCard, secondCard;
 
 const Collection = forwardRef((props, ref) => {
+
   // Added a duplicate card collection with uppercase names to avoid accidental matches by double-clicking, then shuffle all.
-  const shuffledArray = cards.concat(cards.map((value) => value.toUpperCase()));
+  const shuffledArray = (cards.concat(cards.map((value) => value.toUpperCase())));
   // .sort((a, b) => 0.5 - Math.random());
 
   // select the card
-
   const selectedCard = (obj) => {
     if (enabledClick) {
       obj.flip();
