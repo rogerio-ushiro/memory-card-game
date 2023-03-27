@@ -1,8 +1,7 @@
-import { forwardRef, useEffect, useImperativeHandle, useState } from "react";
 import "./Score.css";
 
-const Timer = forwardRef((props, ref) => {
-  return <div className="score">{scoreNumber} points</div>;
-});
+const Timer = (state) => {
+  return <div className="score">{state.score} points</div>;
+};
 
 export default Timer;
