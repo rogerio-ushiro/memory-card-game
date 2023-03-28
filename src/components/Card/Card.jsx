@@ -29,10 +29,10 @@ const Card = (props) => {
     >
       <img
         className={`front-face ${matched ? "matched" : ""}`}
-        src={`../img/${name.toLowerCase()}.svg`}
+        src={`../img/${name.toLowerCase()}.jpg`}
         alt={name}
       />
-      <img className="back-face" src="../img/js-badge.svg" alt="JS Badge" />
+      <img className="back-face" src="../img/google.jpg" alt="verso" />
     </div>
   );
 };

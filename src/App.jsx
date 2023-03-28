@@ -1,43 +1,23 @@
-import { useReducer, useRef } from "react";
-import "./App.css";
-import Collection from "./components/Collection/Collection";
-import Notification from "./components/Notification/Notification";
-import Timer from "./components/Timer/Timer";
-import Score from "./components/Score/Score";
-import { Reducer, initialState } from "./Reducer";
+import { Routes, Route, useNavigate } from "react-router-dom";
+import MemoryGame from "./pages/MemoryGame";
+import Home from "./pages/Home";
 
-function App() {
-  const [state, dispatch] = useReducer(Reducer, initialState);
-
-  const refNotification = useRef();
-  const refScore = useRef();
-  const refCollection = useRef();
-
-  const notify = () => {
-    refNotification.current.showNotification();
-    refScore.current.addPoint();
-  };
-
-  const gameOverTrigger = () => {
-    console.log("game over");
-    // scoreRef.current.handleChildMethod();
-  };
+export default function App() {
+  const navigate = useNavigate();
 
   return (
-    <div className="App center">
-      <Notification ref={refNotification} />
-      <div className="header">
-        <Timer
-          className="timer"
-          state={state} dispatch={dispatch}
-        />
-        <Score className="score" ref={refScore} />
-      </div>
-      <section className="memory-game">
-        <Collection ref={refCollection} notificationTrigger={notify} />
-      </section>
+    <div className="App">
+      <button
+        onClick={() => {
+          navigate("/memory-game");
+        }}
+      >
+        About
+      </button>
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/memory-game" element={<MemoryGame />} />
+      </Routes>
     </div>
   );
 }
-
-export default App;

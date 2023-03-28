@@ -21,11 +21,9 @@
 .front-face,
 .back-face {
   width: 100%;
-  height: 100%;
   padding: 20px;
   position: absolute;
   border-radius: 35px;
-  border: 4px solid rgba(0, 0, 0, 0);
   background: #fff;
   backface-visibility: hidden;
 }

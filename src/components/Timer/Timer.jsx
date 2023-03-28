@@ -1,8 +1,7 @@
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import "./Timer.css";
 
 const Timer = ({ state, dispatch }) => {
-
   const addZero = (time) => (time < 10 ? "0" + time : time);
 
   const formatTime = (time) => {
@@ -12,15 +11,16 @@ const Timer = ({ state, dispatch }) => {
   };
 
   useEffect(() => {
+    if (!state.time) return;
+
     const intervalId = setInterval(() => {
-      dispatch({ type: 'decrement' });
+      if (state.time > 0) dispatch({ type: "decrement" });
     }, 1000);
 
     return () => clearInterval(intervalId);
   }, [state.time]);
 
-
-  return <div className="timer">{state.time}</div>;
+  return <div className="timer">{formatTime(state.time)}</div>;
 };
 
 export default Timer;
