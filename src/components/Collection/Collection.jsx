@@ -2,15 +2,13 @@ import { forwardRef } from "react";
 import Card from "../Card/Card";
 import "./Collection.css";
 
-var cards = process.env.REACT_APP_CARDS.split(",");
 var cover = process.env.REACT_APP_COVER;
 
 let enabledClick = true;
 let firstCard, secondCard;
 
-const Collection = forwardRef((props, ref) => {
+const Collection = forwardRef((props) => {
   // Added a duplicate card collection with uppercase names to avoid accidental matches by double-clicking, then shuffle all.
-  const shuffledArray = cards.concat(cards.map((value) => value.toUpperCase()));
   // .sort((a, b) => 0.5 - Math.random());
 
   // select the card
@@ -54,7 +52,7 @@ const Collection = forwardRef((props, ref) => {
 
   return (
     <>
-      {shuffledArray.map((item, index) => (
+      {props.state.cards.map((item, index) => (
         <Card
           name={item}
           key={item + index}

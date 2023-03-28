@@ -1,10 +1,14 @@
 // Parse the REACT_APP_TIME_SECONDS environment variable as an integer
 var seconds = parseInt(process.env.REACT_APP_TIME_SECONDS);
+var cards = process.env.REACT_APP_CARDS.split(",");
 
 // Define the initial state for the reducer
 const initialState = {
   time: seconds,
   score: 0,
+  cards: cards
+    .concat(cards.map((value) => value.toUpperCase()))
+    .sort((a, b) => 0.5 - Math.random()),
 };
 
 // Define a reducer function that will update the state based on dispatched actions
