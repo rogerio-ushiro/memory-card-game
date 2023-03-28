@@ -1,21 +1,19 @@
+// Parse the REACT_APP_TIME_SECONDS environment variable as an integer
 var seconds = parseInt(process.env.REACT_APP_TIME_SECONDS);
 
-// define the initial state
+// Define the initial state for the reducer
 const initialState = {
   time: seconds,
   score: 0,
 };
 
+// Define a reducer function that will update the state based on dispatched actions
 function Reducer(state, action) {
   switch (action.type) {
-    case "increment":
-      return { time: state.time + 1 };
     case "decrement":
       return Object.assign({}, state, {
-        time: state.time--,
+        time: state.time - 1,
       });
-    case "double":
-      return { time: state.time * 2 };
     case "correct":
       return Object.assign({}, state, {
         score: state.score + 10,

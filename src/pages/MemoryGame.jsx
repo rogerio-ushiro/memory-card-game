@@ -5,12 +5,13 @@ import Score from "../components/Score/Score";
 import Collection from "../components/Collection/Collection";
 import { Reducer, initialState } from "../Reducer";
 import "./MemoryGame.css";
+import { useNavigate } from "react-router-dom";
 
 function MemoryGame() {
   const [state, dispatch] = useReducer(Reducer, initialState);
-
   const refNotification = useRef();
   const refCollection = useRef();
+  const navigate = useNavigate();
 
   useEffect(() => {
     if (state.time === 0) gameOverTrigger();
@@ -20,8 +21,11 @@ function MemoryGame() {
   }, [state.score]);
 
   const gameOverTrigger = () => {
+    navigate("/");
     console.log("game over");
   };
+
+  console.log(state.time);
 
   return (
     <div className="App center">
