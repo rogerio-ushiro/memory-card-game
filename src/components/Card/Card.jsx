@@ -32,7 +32,11 @@ const Card = (props) => {
         src={`../img/${name.toLowerCase()}.jpg`}
         alt={name}
       />
-      <img className="back-face" src="../img/google.jpg" alt="verso" />
+      <img
+        className="back-face"
+        src={`../img/${props.cover}.jpg`}
+        alt="verso"
+      />
     </div>
   );
 };

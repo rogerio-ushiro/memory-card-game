@@ -1,0 +1,24 @@
+.container {
+  display: flex;
+  justify-content: center;
+  padding: 20%;
+}
+.home-button {
+  padding: 1.5rem 4rem;
+  font-size: 2rem;
+  font-family: roboto;
+  box-shadow: 5px 5px 5px 1px lightgray;
+  border-radius: 10px;
+  border: none;
+  color: #888;
+  transition: all 0.2s ease-in-out;
+}
+
+.home-button:hover {
+  transform: scale(1.2);
+}
+
+@font-face {
+  font-family: roboto;
+  src: url("../assets/roboto.ttf");
+}

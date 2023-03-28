@@ -3,6 +3,7 @@ import Card from "../Card/Card";
 import "./Collection.css";
 
 var cards = process.env.REACT_APP_CARDS.split(",");
+var cover = process.env.REACT_APP_COVER;
 
 let enabledClick = true;
 let firstCard, secondCard;
@@ -54,7 +55,12 @@ const Collection = forwardRef((props, ref) => {
   return (
     <>
       {shuffledArray.map((item, index) => (
-        <Card name={item} key={item + index} selectedCard={selectedCard}></Card>
+        <Card
+          name={item}
+          key={item + index}
+          cover={cover}
+          selectedCard={selectedCard}
+        ></Card>
       ))}
     </>
   );

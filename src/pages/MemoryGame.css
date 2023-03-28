@@ -1,0 +1,77 @@
+.header {
+  position: absolute;
+  top: -1rem;
+  left: 0;
+  padding: 1rem;
+  background-color: #6200ee;
+  width: 100%;
+  opacity: 0;
+  animation-name: showUpHeader;
+  animation-delay: 1.2s;
+  animation-duration: 2s;
+  animation-fill-mode: forwards;
+}
+.bottom {
+  position: absolute;
+  left: 0;
+  height: 7rem;
+  padding: 1rem;
+  background-color: #2e2c2f;
+  color: #fff;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  animation-name: showUpBottom;
+  animation-delay: 1s;
+  animation-duration: 2s;
+  animation-fill-mode: forwards;
+}
+.circle {
+  position: absolute;
+  height: 10rem;
+  width: 10rem;
+  bottom: 2rem;
+  padding: 1.2rem;
+  background-color: #2e2c2f;
+  border-radius: 90px;
+  border: 15px solid #f5f5f5;
+  color: #fff;
+  scale: 0;
+  animation-name: appear;
+  animation-delay: 2s;
+  animation-duration: 1s;
+  animation-fill-mode: forwards;
+}
+
+@keyframes appear {
+  0% {
+    scale: 0;
+  }
+  100% {
+    scale: 1;
+  }
+}
+
+@keyframes showUpHeader {
+  0% {
+    opacity: 0;
+    top: -5rem;
+  }
+  100% {
+    opacity: 1;
+    top: 0rem;
+  }
+}
+
+@keyframes showUpBottom {
+  0% {
+    opacity: 0;
+    bottom: -6rem;
+  }
+  100% {
+    opacity: 1;
+    bottom: 0rem;
+  }
+}

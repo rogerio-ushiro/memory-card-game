@@ -4,7 +4,7 @@ import Timer from "../components/Timer/Timer";
 import Score from "../components/Score/Score";
 import Collection from "../components/Collection/Collection";
 import { Reducer, initialState } from "../Reducer";
-import "../App.css";
+import "./MemoryGame.css";
 
 function MemoryGame() {
   const [state, dispatch] = useReducer(Reducer, initialState);
@@ -28,11 +28,15 @@ function MemoryGame() {
       <Notification ref={refNotification} />
       <div className="header">
         <Timer className="timer" state={state} dispatch={dispatch} />
-        <Score className="score" state={state} />
       </div>
       <section className={`memory-game ${"opening"}`}>
         <Collection ref={refCollection} state={state} dispatch={dispatch} />
       </section>
+      <div className="bottom">
+        <div className="circle">
+          <Score className="score" state={state} />
+        </div>
+      </div>
     </div>
   );
 }
