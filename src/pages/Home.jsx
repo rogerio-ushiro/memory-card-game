@@ -5,14 +5,13 @@ export default function Home() {
   const navigate = useNavigate();
   return (
     <div className="container">
-      <button
-        className="home-button"
+      <img
+        src="img/play.svg"
+        className="playBtn"
         onClick={() => {
           navigate("/memory-game");
         }}
-      >
-        Start <br /> Memory Card Game
-      </button>
+      />
     </div>
   );
 }

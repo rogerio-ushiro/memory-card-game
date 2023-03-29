@@ -1,7 +1,14 @@
 .container {
   display: flex;
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: flex;
+  align-items: center;
   justify-content: center;
-  padding: 20%;
+  background-color: #34a853;
+  width: 100%;
+  height: 100%;
 }
 .home-button {
   padding: 1.5rem 4rem;
@@ -12,6 +19,7 @@
   border: none;
   color: #888;
   transition: all 0.2s ease-in-out;
+  height: 10rem;
 }
 
 .home-button:hover {
@@ -21,4 +29,10 @@
 @font-face {
   font-family: roboto;
   src: url("../assets/roboto.ttf");
+}
+
+.playBtn {
+  height: 15rem;
+  width: 15rem;
+  filter: drop-shadow(3px 5px 2px rgb(0 0 0 / 0.4));
 }

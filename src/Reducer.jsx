@@ -7,9 +7,10 @@ const initialState = {
   time: seconds,
   score: 0,
   cards: cards
-    .concat(cards.map((value) => value.toUpperCase()))
-    .sort((a, b) => 0.5 - Math.random()),
+    .concat(cards.map((value) => value.toUpperCase())) // Add uppercase versions of the cards
+    .sort((a, b) => 0.5 - Math.random()), // Randomize the order of the cards
 };
+
 
 // Define a reducer function that will update the state based on dispatched actions
 function Reducer(state, action) {

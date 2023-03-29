@@ -25,8 +25,6 @@ function MemoryGame() {
     console.log("game over");
   };
 
-  console.log(state.time);
-
   return (
     <div className="App center">
       <Notification ref={refNotification} />
