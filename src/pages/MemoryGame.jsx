@@ -11,18 +11,30 @@ function MemoryGame() {
   const [state, dispatch] = useReducer(Reducer, initialState);
   const refNotification = useRef();
   const refCollection = useRef();
+
   const navigate = useNavigate();
+
+  setTimeout(() => {dispatch({ type: "start-game" });
+  }, 3500);
 
   useEffect(() => {
     if (state.time === 0) gameOverTrigger();
   }, [state.time]);
+
   useEffect(() => {
-    if (state.score > 0) refNotification.current.showNotification();
+    if (state.score === (state.cards.length / 2) * 10) {
+      refNotification.current.wellDone();
+      setTimeout(() => {
+        navigate("/");
+      }, 5000);
+    } else if (state.score > 0) {
+      refNotification.current.plusPoints();
+    }
   }, [state.score]);
 
   const gameOverTrigger = () => {
     navigate("/");
-    console.log("game over");
+    refNotification.current.gameOver();
   };
 
   return (

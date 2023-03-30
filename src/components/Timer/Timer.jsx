@@ -14,7 +14,7 @@ const Timer = ({ state, dispatch }) => {
     if (!state.time) return;
 
     const intervalId = setInterval(() => {
-      if (state.time > 0) dispatch({ type: "decrement" });
+      dispatch({ type: "decrement" });
     }, 1000);
 
     return () => clearInterval(intervalId);

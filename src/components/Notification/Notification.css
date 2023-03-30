@@ -1,5 +1,4 @@
-.notification,
-.game-over {
+.notification {
   position: fixed;
   display: none;
   opacity: 1;
@@ -14,12 +13,14 @@
   font-weight: bolder;
   transition-timing-function: ease-out;
   animation-iteration-count: 1;
+}
+.plusPoints {
   animation: scoreUp 1.5s forwards;
 }
 
-.game-over {
-  transition-timing-function: ease-out;
-  animation: game-over-animation 5s forwards;
+.wellDone,
+.gameOver {
+  animation: scoreUp 3.5s forwards;
 }
 
 .show {

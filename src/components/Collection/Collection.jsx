@@ -7,7 +7,7 @@ var cover = process.env.REACT_APP_COVER;
 let enabledClick = true;
 let firstCard, secondCard;
 
-const Collection = forwardRef((props) => {
+const Collection = forwardRef((props, ref) => {
   // Added a duplicate card collection with uppercase names to avoid accidental matches by double-clicking, then shuffle all.
   // .sort((a, b) => 0.5 - Math.random());
 
@@ -37,7 +37,7 @@ const Collection = forwardRef((props) => {
         secondCard.matched();
         [firstCard, secondCard] = [null, null, null, null];
         props.dispatch({ type: "correct" });
-      }, 400);
+      }, 200);
     } else {
       setTimeout(() => {
         firstCard.unflip();
@@ -47,7 +47,7 @@ const Collection = forwardRef((props) => {
     }
     setTimeout(() => {
       enabledClick = true;
-    }, 1500);
+    }, 850);
   }
 
   return (
