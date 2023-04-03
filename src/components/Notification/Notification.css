@@ -19,7 +19,7 @@
 }
 
 .wellDone,
-.gameOver {
+.timesUp {
   animation: scoreUp 3.5s forwards;
 }
 

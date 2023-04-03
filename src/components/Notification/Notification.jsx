@@ -4,7 +4,7 @@ import { forwardRef, useEffect, useImperativeHandle, useState } from "react";
 const Notification = forwardRef((props, ref) => {
   const [showPlusPoints, setShowPlusPoints] = useState(false);
   const [showWellDone, setShowWellDone] = useState(false);
-  const [showGameOver, setShowGameOver] = useState(false);
+  const [showTimesUp, setShowTimesUp] = useState(false);
 
   useImperativeHandle(ref, () => ({
     plusPoints() {
@@ -13,33 +13,37 @@ const Notification = forwardRef((props, ref) => {
     wellDone() {
       setShowWellDone(true);
     },
-    gameOver() {
-      setShowGameOver(true);
+    timesUp() {
+      setShowTimesUp(true);
     },
   }));
 
+  // notifies the sum of points
   useEffect(() => {
     setTimeout(() => {
       setShowPlusPoints(false);
     }, 1000);
   }, [showPlusPoints]);
 
+  // notifies end game
   useEffect(() => {
     setTimeout(() => {
       setShowWellDone(false);
-      setShowGameOver(false);
+      setShowTimesUp(false);
     }, 3000);
-  }, [showWellDone, showGameOver]);
+  }, [showWellDone, showTimesUp]);
 
   return (
     <div>
-      <div className={`notification plusPoints ${showPlusPoints ? "show" : ""}`}>
+      <div
+        className={`notification plusPoints ${showPlusPoints ? "show" : ""}`}
+      >
         <h1>+10 points!</h1>
       </div>
       <div className={`notification wellDone ${showWellDone ? "show" : ""}`}>
         <h1>Well Done!</h1>
       </div>
-      <div className={`notification gameOver ${showGameOver ? "show" : ""}`}>
+      <div className={`notification timesUp ${showTimesUp ? "show" : ""}`}>
         <h1>Time's up!</h1>
       </div>
     </div>

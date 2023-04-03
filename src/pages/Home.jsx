@@ -6,6 +6,7 @@ export default function Home() {
   return (
     <div className="container">
       <img
+        alt="play-btn"
         src="img/play.svg"
         className="playBtn"
         onClick={() => {

@@ -7,6 +7,9 @@ const initialState = {
   time: seconds,
   score: 0,
   playing: false,
+  mili: cards
+    .concat(cards.map((value) => value.toUpperCase())) // Add uppercase versions of the cards
+    .sort((a, b) => 0.5 - Math.random()), // Randomize the order of the cards
   cards: cards.concat(cards.map((value) => value.toUpperCase())), // Add uppercase versions of the cards
   // .sort((a, b) => 0.5 - Math.random()), // Randomize the order of the cards
 };
@@ -29,6 +32,10 @@ function Reducer(state, action) {
     case "stop-game":
       return Object.assign({}, state, {
         playing: false,
+      });
+    case "shuffle":
+      return Object.assign({}, state, {
+        cards: initialState.cards.sort((a, b) => 0.5 - Math.random()), // Randomize the order of the cards
       });
     default:
       throw new Error("Unexpected action");

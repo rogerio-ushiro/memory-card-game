@@ -18,7 +18,7 @@ const Timer = ({ state, dispatch }) => {
     }, 1000);
 
     return () => clearInterval(intervalId);
-  }, [state.time]);
+  }, [state.time, dispatch]);
 
   return <div className="timer">{formatTime(state.time)}</div>;
 };

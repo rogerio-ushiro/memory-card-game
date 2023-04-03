@@ -14,15 +14,18 @@ function MemoryGame() {
 
   const navigate = useNavigate();
 
-  setTimeout(() => {dispatch({ type: "start-game" });
-  }, 3500);
-
+  // shuffle cards and delay timer for 3.5s
   useEffect(() => {
-    if (state.time === 0) gameOverTrigger();
-  }, [state.time]);
+    dispatch({ type: "shuffle" });
+    setTimeout(() => {
+      dispatch({ type: "start-game" });
+    }, 3500);
+  }, []);
 
+  // found all pairs
   useEffect(() => {
     if (state.score === (state.cards.length / 2) * 10) {
+      dispatch({ type: "stop-game" });
       refNotification.current.wellDone();
       setTimeout(() => {
         navigate("/");
@@ -32,10 +35,16 @@ function MemoryGame() {
     }
   }, [state.score]);
 
-  const gameOverTrigger = () => {
-    navigate("/");
-    refNotification.current.gameOver();
-  };
+  // time's up
+  useEffect(() => {
+    if (state.time === 0) {
+      dispatch({ type: "stop-game" });
+      setTimeout(() => {
+        navigate("/");
+      }, 3000);
+      refNotification.current.timesUp();
+    }
+  }, [state.time]);
 
   return (
     <div className="App center">
