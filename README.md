@@ -35,7 +35,7 @@ The purpose of developing this game from scratch was to build a ReactJS project 
   ![](./readme.docs/memory-card-game-flip-card.gif)
 
 
-### Points notificaion
+### Animated gained points notification
   
   ![](./readme.docs/memory-card-game-points-notification.PNG)
 
